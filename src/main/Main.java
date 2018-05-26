@@ -28,7 +28,7 @@ public class Main {
         Ranking ranking = new Ranking(cadastro.getBanco());
         Mesa mesa = new Mesa();
         Principal p = new Principal(cadastro);
-
+/*
         Mao jogador1 = new Mao(7);
         Mao jogador2 = new Mao(7);
 
@@ -49,12 +49,12 @@ public class Main {
         System.out.println("Mão jogador 1: " + jogador1.olharMao());
         System.out.println("Mão jogador 2: " + jogador2.olharMao());
 
-
+/*
         do{
 
             escolhas = Integer.parseInt(JOptionPane.showInputDialog(null, "1 - Cadastro\n2 - Login\n0 - Sair", TITULO, JOptionPane.INFORMATION_MESSAGE));
 
-            /** Cadastro **/
+
 
             while(escolhas == 1){
 
@@ -80,7 +80,7 @@ public class Main {
                 escolhas = -1;
             }
 
-            /** Login  **/
+
 
             while(escolhas == 2){
 
@@ -135,7 +135,7 @@ public class Main {
             }
 
         }while(escolhas != 0);
-
+*/
         /*
         -----------------------------------------------------------------TESTES CAIO-------------------------------------------------
         User user = new Usuario("python","caio@g.com","caio");

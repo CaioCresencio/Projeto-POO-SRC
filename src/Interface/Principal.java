@@ -11,6 +11,7 @@ public class Principal extends JFrame {
     private JMenu menu;
     private JMenuItem itemCadastro;
     private JMenuItem itemLogin;
+    private JMenuItem itemJogar;
     private JMenuItem itemSair;
     private JMenuBar barra;
     private Cadastro banco;
@@ -28,11 +29,13 @@ public class Principal extends JFrame {
         setJMenuBar(barra);
         this.itemCadastro = new JMenuItem("Cadastrar usuario");
         this.itemLogin = new JMenuItem("Login");
+        this.itemJogar = new JMenuItem("Jogar");
         this.itemSair = new JMenuItem("Sair");
 
 
         menu.add(itemCadastro);
         menu.add(itemLogin);
+        menu.add(itemJogar);
         menu.add(itemSair);
         barra.add(menu);
         itemCadastro.addActionListener(new ActionListener() {
@@ -42,7 +45,7 @@ public class Principal extends JFrame {
                 cadastro.setContentPane(new TelaCadastro(banco).getPainelPrincipal());
                 cadastro.setLocationRelativeTo(null);
                 cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                cadastro.setSize(500,400);
+                cadastro.pack();
                 cadastro.setVisible(true);
             }
         });
@@ -53,7 +56,7 @@ public class Principal extends JFrame {
                 login.setContentPane(new Login(banco).getPainel());
                 login.setLocationRelativeTo(null);
                 login.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                login.setSize(500,400);
+                login.pack();
                 login.setVisible(true);
             }
         });
@@ -61,6 +64,12 @@ public class Principal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        itemJogar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JogoHVH jhvh = new JogoHVH();
             }
         });
     }
@@ -75,6 +84,7 @@ public class Principal extends JFrame {
         fundo.setLayout(new FlowLayout());
         setContentPane(fundo);
     }
+
 
 
 

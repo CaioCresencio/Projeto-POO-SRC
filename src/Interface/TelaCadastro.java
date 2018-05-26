@@ -14,27 +14,29 @@ import java.awt.event.ActionListener;
 public class TelaCadastro {
     private JTextField fieldEmail;
     private JTextField fieldNome;
-    private JTextField fieldSenha;
+    private JPasswordField fieldSenha;
     private JLabel labelEmail;
     private JPanel painelPrincipal;
     private JLabel labelNome;
     private JLabel labelSenha;
     private JLabel labelCadastro;
-    private JButton botaoCadastro;
-    private JButton voltarButton;
+    private JButton buttonCadastro;
+    private JButton buttonLimpar;
     private JPanel painelBotao;
 
     public TelaCadastro(Cadastro banco){
-        botaoCadastro.addActionListener(new ActionListener() {
+
+        buttonCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = fieldNome.getText();
                 String email= fieldEmail.getText();
-                String senha = fieldSenha.getText();
+                String senha = new String(fieldSenha.getPassword());
                 if(banco.autenticarEmail(email)){
                     if(banco.procuraEmail(email) == null) {
                         banco.newCadastro(new Usuario(nome, email, senha));
                         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                        limpaCampos();
                     }else{
                         JOptionPane.showMessageDialog(null,"E-mail ja cadastrado!");
                     }
@@ -43,14 +45,21 @@ public class TelaCadastro {
                 }
             }
         });
-        voltarButton.addActionListener(new ActionListener() {
+        buttonLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                limpaCampos();
             }
         });
     }
     public JPanel getPainelPrincipal(){
         return painelPrincipal;
     }
+
+    public void limpaCampos(){
+        fieldEmail.setText("");
+        fieldNome.setText("");
+        fieldSenha.setText("");
+    }
+
 }

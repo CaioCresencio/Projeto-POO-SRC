@@ -1,11 +1,11 @@
 package usuario;
 
-public class Usuario extends User {
+public class Usuario extends User  implements Comparable<User> {
 
     private String nome;
     private String email;
     private String senha;
-    private long score;
+    private int score;
     private boolean bloqueado;
     private long tempoBloqueado;
     private boolean onli;
@@ -29,7 +29,20 @@ public class Usuario extends User {
         bloqueado = false;
         this.tempoBloqueado = 0;
     }
+    @Override
+    public int getScore() {
+        return this.score;
+    }
 
+    @Override
+    public void setScore(long info) {
+        this.score += info;
+    }
+
+    @Override
+    public boolean equals(User info) {
+        return false;
+    }
     @Override
     public String getNome() {
         return this.nome;
@@ -60,15 +73,7 @@ public class Usuario extends User {
         this.senha = info;
     }
 
-    @Override
-    public long getScore() {
-        return this.score;
-    }
 
-    @Override
-    public void setScore(long info) {
-        this.score += info;
-    }
 
     @Override
     public boolean getBloqueado() {
@@ -142,6 +147,9 @@ public class Usuario extends User {
     public boolean isOnli(){
         return onli;
     }
+
+
+
     /**
      * Informa a quantidade de vitórias de um usuário.
      * @return vitórias.
