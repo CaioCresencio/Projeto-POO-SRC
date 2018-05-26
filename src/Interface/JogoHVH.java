@@ -1,4 +1,6 @@
 package Interface;
+import usuario.User;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +27,8 @@ public class JogoHVH extends JFrame implements ActionListener {
     private JPanel painelMesa;
     private JPanel painelDados;
     private JPanel painelJogador;
+    private User j1;
+    private User j2;
 
     private GridBagLayout layout;
     private GridBagConstraints constraints;
@@ -33,7 +37,9 @@ public class JogoHVH extends JFrame implements ActionListener {
 
 
 
-    public JogoHVH() {
+    public JogoHVH(User j1, User j2) {
+        this.j1 = j1;
+        this.j2 = j2;
         criarJanela();
         iniciar();
 
@@ -61,8 +67,8 @@ public class JogoHVH extends JFrame implements ActionListener {
         labelMesa = new JLabel("5-1|1-3|3-6|6-8|");
         campoMesa = new JLabel("Mesa:");
         labelMao = new JLabel("4-2 ; 3-4 ; 6-6;");
-        campoMao = new JLabel("Mão do jogador:");
-        labelJogador = new JLabel("O Jogador: Caio está jogando");
+        campoMao = new JLabel("Mão do jogador");
+        labelJogador = new JLabel();
 
         botaoLeft = new JButton(">");
         botaoRight = new JButton("<");

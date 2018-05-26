@@ -70,27 +70,17 @@ public class Cadastro {
     public User procuraEmail(String info){
         User retorno = null;
         boolean achou = false;
-        User aux = null;
-        int i = 0,dif;
+        int i = 0;
 
         while(i < banco.getSize() && !achou){
-            aux = banco.pullBanco();
-            i++;
 
-            if(aux != null && aux.getEmail().equals(info)){
-                retorno = aux;
+            if(banco.mostrarUsuario(i).getEmail().equals(info)){
+                retorno = banco.mostrarUsuario(i);
                 achou = true;
             }
-
-            banco.pushBanco(aux);
+            i++;
         }
 
-        dif = (banco.getSize() - i)+1;
-
-        while(dif>=0){
-            banco.pushBanco(banco.pullBanco());
-            dif--;
-        }
         return retorno;
     }
 
@@ -110,11 +100,20 @@ public class Cadastro {
      */
     public boolean autenticarSenha(User info, String senha){
 
-        boolean confirma = false;
 
-        if(info.getSenha().equals(criptar.gerarMD5(senha)))
+        boolean confirma;
+
+        if(info.getSenha().equals(criptar.gerarMD5(senha)) && !info.isOnli()) {
             confirma = true;
-
+            User user = procuraEmail(info.getEmail());
+            user.setOnli(true);
+        }else{
+            info.consomeTentativa();
+            if(info.getTentativas() == 3){
+                info.bloquearUser(System.currentTimeMillis());
+            }
+            confirma = false;
+        }
         return confirma;
     }
 }

@@ -42,7 +42,9 @@ public class Banco_User {
         }
 
         return usuario;
+
     }
+
 
     /**
      * @return Retorna o primeiro usuario do banco.

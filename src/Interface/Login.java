@@ -61,7 +61,9 @@ public class Login {
         buttonPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JogoHVH jhvh = new JogoHVH();
+                User j1 = banco.procuraEmail(fieldEmail1.getText());
+                User j2 = banco.procuraEmail(fieldEmail2.getText());
+                JogoHVH jhvh = new JogoHVH(j1,j2);
             }
         });
 
@@ -72,6 +74,7 @@ public class Login {
   public void confereLogados(){
       if(loginJ1 && loginJ2){
           buttonPlay.setEnabled(true);
+
       }
   }
   public boolean logaUser(JTextField fieldEmail, JPasswordField fieldSenha){

@@ -69,7 +69,7 @@ public class Principal extends JFrame {
         itemJogar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JogoHVH jhvh = new JogoHVH();
+                //JogoHVH jhvh = new JogoHVH();
             }
         });
     }
